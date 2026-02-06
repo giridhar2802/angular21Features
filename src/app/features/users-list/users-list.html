@@ -1,0 +1,32 @@
+<!-- Main container -->
+<div class="container mx-auto py-8">
+    <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+      
+      <!-- Table Header -->
+      <table class="min-w-full table-auto text-left">
+        <thead class="bg-blue-600 text-white">
+          <tr>
+            <th class="px-4 py-2 text-sm font-medium">First Name</th>
+            <th class="px-4 py-2 text-sm font-medium">Last Name</th>
+            <th class="px-4 py-2 text-sm font-medium">Maiden Name</th>
+            <th class="px-4 py-2 text-sm font-medium">Email</th>
+            <th class="px-4 py-2 text-sm font-medium">Phone</th>
+          </tr>
+        </thead>
+        
+        <!-- Table Body -->
+        <tbody class="text-gray-700">
+          <!-- Row 1 -->
+           @for (item of userListSignal(); track $index) {
+                <tr class="hover:bg-blue-200 hover:cursor-pointer" (click)="getUserDetails(item)">
+                    <td class="px-4 py-2">{{ item.firstName }}</td>
+                    <td class="px-4 py-2">{{ item.lastName }}</td>
+                    <td class="px-4 py-2">{{ item.maidenName }}</td>
+                    <td class="px-4 py-2">{{ item.email }}</td>
+                    <td class="px-4 py-2">{{ item.phone }}</td>
+                </tr>
+           }
+        </tbody>
+      </table>
+    </div>
+</div>
