@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, contentChild } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -9,4 +9,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class Child {
 
+  // headerContent = contentChild('header');
+  bodyContent = contentChild('body');
+  // aditionalInfoContent = contentChild('aditionalInfo');
 }
