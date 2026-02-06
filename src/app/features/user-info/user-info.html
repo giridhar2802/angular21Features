@@ -1,0 +1,90 @@
+<!-- Main container -->
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
+
+      <!-- Form Title -->
+      <h2 class="text-2xl font-semibold text-center text-gray-800">Personal Information Form</h2>
+
+      <!-- <form action="#" method="POST" class="space-y-4">
+
+        <div>
+          <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+          <input type="text" id="firstName" name="firstName" [value]="firstName()" (input)="updateFirstName($any($event.target.value))" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+          <input type="text" id="lastName" name="lastName" [value]="lastName()" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <div>
+          <label for="maidenName" class="block text-sm font-medium text-gray-700">Maiden Name</label>
+          <input type="text" id="maidenName" name="maidenName" [value]="maindenName()" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <input type="email" id="email" name="email" required [value]="emailId()" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required [value]="phoneNumber()"class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+        <div class="flex justify-center">
+          <button type="submit" class="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-lg focus:outline-none hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            Submit
+          </button>
+        </div>
+
+        it{{computedSignal()}}
+      </form> -->
+    </div>
+     <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
+
+      <!-- Form Title -->
+      <h2 class="text-2xl font-semibold text-center text-gray-800">Using Signal Form</h2>
+
+      <!-- Form -->
+      <form action="#" method="POST" class="space-y-4">
+
+        <!-- First Name -->
+        <div>
+          <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+          <input type="text" id="firstName" [formField]="userForm.firstName" (input)="updateFirstName($any($event.target.value))" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <!-- Last Name -->
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+          <input type="text" id="lastName" [formField]="userForm.lastName" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <!-- Maiden Name -->
+        <div>
+          <label for="maidenName" class="block text-sm font-medium text-gray-700">Maiden Name</label>
+          <input type="text" id="maidenName" [formField]="userForm.maidenName" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <input type="email" id="email" [formField]="userForm.email" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="tel" id="phone" [formField]="userForm.phone" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+        </div>
+        <!-- Submit Button -->
+        <div class="flex justify-center">
+          <button type="submit" class="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-lg focus:outline-none hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            Submit
+          </button>
+        </div>
+
+        <!-- it{{computedSignal()}} -->
+      </form>
+    </div>
+  </div>
