@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { Signals } from '../../core/services/signals';
-import { form, FormField, maxLength, minLength, PathKind, required, SchemaPath, emailError } from '@angular/forms/signals';
+import { form, FormField, maxLength, minLength, PathKind, required, SchemaPath, emailError, email } from '@angular/forms/signals';
 import { defaultUserData, UserForm } from '../../core/models/userform.model';
 import { CommonModule } from '@angular/common';
 
@@ -26,7 +26,8 @@ export class UserInfo {
     minLength(schema.lastName, 3, { message: 'Last name must be at least 3 characters long'});
     maxLength(schema.lastName, 6, { message: 'Last name should not exceed 6 characters long'});
     required(schema.maidenName);
-    required(schema.email);
+    required(schema.email, { message: 'Email is required' });
+    email(schema.email, { message: 'Email pattern' });
     required(schema.phone);
   });
 
