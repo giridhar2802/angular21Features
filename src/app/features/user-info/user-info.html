@@ -52,12 +52,33 @@
         <div>
           <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
           <input type="text" id="firstName" [formField]="userForm.firstName" (input)="updateFirstName($any($event.target.value))" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+          <div class="text-sm text-gray-500 mt-1">Current Value: {{userForm.firstName().value()}}</div>
+          @if(userForm.firstName().touched() && userForm.firstName().invalid()) {
+            @for(error of userForm.firstName().errors(); track error) {
+              <div class="text-sm text-red-400">
+                {{error.message}}
+              </div>
+            }
+          }
         </div>
 
         <!-- Last Name -->
         <div>
           <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
           <input type="text" id="lastName" [formField]="userForm.lastName" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+          @if(userForm.lastName().invalid()) { 
+            @for(error of userForm.lastName().errors(); track error) {
+              <div class="text-sm text-red-400">
+                {{error.message}}
+              </div>
+            }
+          }
+          
+          <!-- @if(userForm.lastName().minLength(3)) {
+          <div class="text-sm text-red-400">
+            lastName is required.
+          </div>
+          } -->
         </div>
 
         <!-- Maiden Name -->
@@ -79,7 +100,7 @@
         </div>
         <!-- Submit Button -->
         <div class="flex justify-center">
-          <button type="submit" class="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-lg focus:outline-none hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          <button type="button" (click)="submitForm()" class="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-lg focus:outline-none hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             Submit
           </button>
         </div>

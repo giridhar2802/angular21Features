@@ -1,12 +1,12 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { Apis } from '../../core/services/apis';
 import { Signals } from '../../core/services/signals';
-import { form, FormField  } from '@angular/forms/signals';
+import { form, FormField, maxLength, minLength, PathKind, required, SchemaPath, emailError } from '@angular/forms/signals';
 import { defaultUserData, UserForm } from '../../core/models/userform.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-info',
-  imports: [FormField],
+  imports: [FormField, CommonModule],
   templateUrl: './user-info.html',
   styleUrl: './user-info.css',
 })
@@ -20,7 +20,15 @@ export class UserInfo {
   // computedSignal =  computed(() =>  {return `${this.firstName()} ${this.lastName()}`});
 
   userFormModel = signal<UserForm>(defaultUserData);
-  userForm = form(this.userFormModel);
+  userForm = form(this.userFormModel, (schema) => {
+    required(schema.firstName, { message: 'First name is required'});
+    required(schema.lastName, { message: 'Last name is required'});
+    minLength(schema.lastName, 3, { message: 'Last name must be at least 3 characters long'});
+    maxLength(schema.lastName, 6, { message: 'Last name should not exceed 6 characters long'});
+    required(schema.maidenName);
+    required(schema.email);
+    required(schema.phone);
+  });
 
   constructor(private signalService: Signals) {
 
@@ -52,6 +60,18 @@ updateFirstName(event: any) {
   ngOnInit() {
    
 
+  }
+
+  submitForm() {
+    console.log(this.userFormModel());
+    if(this.userForm().valid()) {
+      console.log('Form Submitted Successfully!');
+    } else {
+      console.log('errpr case', this.userForm());
+      this.userForm().errors().forEach(error => {
+        console.log('Error case ',error);
+      });
+    } 
   }
 }
 
