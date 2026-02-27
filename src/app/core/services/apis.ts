@@ -13,6 +13,9 @@ export class Apis {
     return this.http.get('https://dummyjson.com/users')
   }
 
+  searchUser(query: string): Observable<any> {
+    return this.http.get('https://dummyjson.com/users/search?limit=5&q=' + query)
+  }
   handleError(error: any) {
     console.error('An error occurred:', error);
     return of([]);

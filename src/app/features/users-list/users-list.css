@@ -1,0 +1,9 @@
+.bold-text {
+  font-weight: bold;
+}
+
+.normal-text {
+  font-weight: normal;
+  color: gray;
+  font-size: small;
+}
