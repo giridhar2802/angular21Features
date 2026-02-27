@@ -1,5 +1,11 @@
 <!-- Main container -->
 <div class="container mx-auto py-8">
+  <div class="bg-white shadow-lg rounded-lg">
+    <div class="flex col-auto">
+      <input type="text" placeholder="Search by name or email" (input)="searchQuery.set($event.target.value)" class="w-full p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"/>
+      
+    </div>
+  </div>
     <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
       
       <!-- Table Header -->
@@ -28,5 +34,15 @@
            }
         </tbody>
       </table>
+      <div class="flex justify-end">
+        <!-- Pagination Block -->
+        <button class="px-4 py-2 bg-gray-300 text-gray-700 rounded-l-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+        (click)="paginate('prev')"
+        [disabled]="page() === 1">Previous</button>
+        <span>Count: {{totalRecords()}} Page: {{page()}}</span>
+        <button class="px-4 py-2 bg-gray-300 text-gray-700 rounded-r-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+        (click)="paginate('next')"
+        >Next</button>
+      </div>
     </div>
 </div>
